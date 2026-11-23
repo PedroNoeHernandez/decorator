@@ -204,10 +204,16 @@ Ejecuta `Main` y verifica que:
 
 #### Preguntas de Análisis:
 
-- ¿Qué responsabilidad añade `SuscripcionDecorator` al catálogo que envuelve?
-- ¿Por qué `CatalogoDecorator` guarda una referencia de tipo `CatalogoPeliculas` y no de una clase concreta?
-- ¿Qué ventaja tiene comprobar la suscripción al consultar el catálogo, en vez de generar una clase para cada combinación de suscripciones?
-- ¿Qué cambiarías si un usuario pudiera acceder a varios catálogos con una única suscripción de paquete?
+- ¿Qué responsabilidad añade `SuscripcionDecorator` al catálogo que envuelve?  Revisa que el usuario tenga sus sucripción activa antes de mostrar las películas, en este laboratorio le bloquea el acceso al usuario, aunque sabekos que en la vida real sí muestra la lista, pero lo que se bloquea es la reproducción de contenido.
+
+
+- ¿Por qué `CatalogoDecorator` guarda una referencia de tipo `CatalogoPeliculas` y no de una clase concreta? Porque así envuelve de una sola vez los demás catálogos, así no hace un decorator diferente para c/u.
+
+
+- ¿Qué ventaja tiene comprobar la suscripción al consultar el catálogo, en vez de generar una clase para cada combinación de suscripciones? Ya no creamos más clases diferentes, evitamos desorden y permite que el acceso cambie durante la ejecución del programa, así activas o cancles suscripción con el mismo objeto sin la creación de clases nuevas.
+
+
+- ¿Qué cambiarías si un usuario pudiera acceder a varios catálogos con una única suscripción de paquete? Agregaría algún concepto de paquete o plan, así se revisa si el usuario tiene un paquete o plan activo, aunque en la práctica esto añadiría más complejidad al considerar ciertas reglas de negocio. 
 
 ## Diagrama de clases
 

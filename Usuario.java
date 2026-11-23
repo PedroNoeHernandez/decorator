@@ -3,6 +3,8 @@ import java.util.Set;
 
 public class Usuario {
     private final String nombre;
+    private final Set<ServicioStreaming> suscripcionesActivas = EnumSet.noneOf(
+    ServicioStreaming.class);
     //TODO: Implementar la clase Usuario que represente a un usuario del sistema. Esta clase debe tener un nombre y una lista de suscripciones activas a los diferentes servicios de streaming. Se deben implementar métodos para activar y cancelar suscripciones, así como para verificar si el usuario tiene una suscripción activa a un servicio específico.
     //private final Set<ServicioStreaming> suscripcionesActivas = EnumSet.noneOf(ServicioStreaming.class);
 
@@ -14,6 +16,16 @@ public class Usuario {
         return nombre;
     }
 
+    public void activarSuscripcion(ServicioStreaming servicio) {
+        suscripcionesActivas.add(servicio);
+    }
+
+    public void cancelarSuscripcion(ServicioStreaming servicio) {
+        suscripcionesActivas.remove(servicio);
+    }
+
+    public boolean tieneSuscripcion(ServicioStreaming servicio) {
+        return suscripcionesActivas.contains(servicio);
+    }
     //TODO: Implementar los métodos activarSuscripcion, cancelarSuscripcion y tieneSuscripcion para gestionar las suscripciones activas del usuario.
-    
 }
